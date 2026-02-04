@@ -1,5 +1,6 @@
 package com.portfolio.Risk0.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -24,11 +25,13 @@ public class UserCourse {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "user_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JoinColumn(name = "course_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Course course;
